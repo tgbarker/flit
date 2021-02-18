@@ -1,0 +1,30 @@
+name: flit
+description: Universal package for quick time structured apps
+version: 0.0.1
+author:
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # state management with bloc
+  bloc: ^6.1.1
+  flutter_bloc: ^6.1.2
+  reactive_forms: ^8.0.3
+  #dependancy injection
+  get_it: ^5.0.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
