@@ -1,7 +1,7 @@
 name: flit
 description: Universal package for quick time structured apps
 version: 0.0.1
-author:
+author: T Barker
 homepage:
 
 environment:
