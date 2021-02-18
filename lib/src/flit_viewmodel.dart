@@ -8,10 +8,10 @@ abstract class FlitViewModel<T> extends Cubit<T> {
   void init(Function f) => f();
 }
 
-abstract class BaseFormConfig {
+abstract class FlitBaseFormConfig {
   final Map<String, BaseFormElement> formElements;
   final FormGroup form;
-  BaseFormConfig(this.formElements) : form = buildForm(formElements);
+  FlitBaseFormConfig(this.formElements) : form = buildForm(formElements);
 
   static FormGroup buildForm(Map<String, dynamic> formElements) {
     return fb.group(formElements.map((key, value) {
@@ -43,12 +43,12 @@ class FormElementMap<MODEL> extends BaseFormElement {
   FormElementMap(this.elements);
 }
 
-abstract class BaseFormViewModel<MODEL, STATE extends FlitState,
-    FORM extends BaseFormConfig> extends FlitViewModel<STATE> {
+abstract class FlitFormViewModel<MODEL, STATE extends FlitState,
+    FORM extends FlitBaseFormConfig> extends FlitViewModel<STATE> {
   final FORM formConfig;
   MODEL formModel;
 
-  BaseFormViewModel(STATE state, this.formConfig) : super(state);
+  FlitFormViewModel(STATE state, this.formConfig) : super(state);
 
   ///
   /// Function to load data to the form
