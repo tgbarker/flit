@@ -21,6 +21,7 @@ abstract class FlitBaseScreen<
 
   Widget buildBody(BuildContext context);
   void initViewModel(final VM viewModel);
+  void initBuild();
 
   void addListener(OnStateChanged<STATE> stateListener) {
     this.blocListeners.add(
@@ -39,6 +40,7 @@ abstract class FlitBaseScreen<
 
   @override
   Widget build(BuildContext context) {
+    initBuild();
     return BlocProvider(
         key: UniqueKey(),
         create: (_) => FlitDependencyInjector.injector<VM>(),
