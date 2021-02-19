@@ -42,8 +42,8 @@ abstract class FlitBaseScreen<
   Widget build(BuildContext context) {
     initBuild();
     return BlocProvider(
-        key: UniqueKey(),
-        create: (_) => FlitDependencyInjector.injector<VM>(),
+        //key: UniqueKey(),
+        create: (_) => FlitDependencyInjector.injector<VM>()..init(bundle),
         child: Builder(
           builder: (providerContext) {
             // init the viewmodel when it has been constructed in the context

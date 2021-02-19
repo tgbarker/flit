@@ -1,11 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import 'flit_bundle.dart';
 import 'flit_state.dart';
 
 abstract class FlitViewModel<T> extends Cubit<T> {
   FlitViewModel(T state) : super(state);
-  void init(Function f) => f();
+  void init(FlitBundle bundle) {}
 }
 
 abstract class FlitBaseFormConfig {

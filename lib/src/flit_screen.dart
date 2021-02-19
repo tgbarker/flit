@@ -13,10 +13,10 @@ abstract class FlitScreen<
   FlitScreen(FlitBundle bundle) : super(bundle);
 
   // Listener on the state of the screen for UI changes with VM
-  List<OnStateChanged<STATE>> registerListeners() => [];
+  List<OnStateChanged<STATE>> get registerListeners => [];
 
   @override
   void initBuild() {
-    registerListeners().forEach((listener) => addListener(listener));
+    registerListeners.forEach((listener) => addListener(listener));
   }
 }
