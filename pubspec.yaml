@@ -15,7 +15,7 @@ dependencies:
   # state management with bloc
   bloc: ^6.1.1
   flutter_bloc: ^6.1.2
-  reactive_forms: ^8.0.3
+  reactive_forms: ^9.1.0
   #dependancy injection
   get_it: ^5.0.4
 
