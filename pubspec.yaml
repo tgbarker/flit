@@ -5,19 +5,18 @@ author: T Barker
 homepage:
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
   # state management with bloc
-  bloc: ^6.1.1
-  flutter_bloc: ^6.1.2
-  reactive_forms: ^9.1.0
+  bloc: ^7.0.0
+  flutter_bloc: ^7.0.0
+  reactive_forms: ^10.2.0
   #dependancy injection
-  get_it: ^5.0.4
+  get_it: ^6.1.1
 
 dev_dependencies:
   flutter_test:

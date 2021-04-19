@@ -10,7 +10,7 @@ abstract class FlitFragment<
     BUNDLE extends FlitBundle,
     VM extends FlitViewModel<STATE>,
     STATE extends FlitState> extends FlitBaseScreen<BUNDLE, VM, STATE> {
-  FlitFragment(FlitBundle bundle) : super(bundle);
+  FlitFragment(BUNDLE bundle) : super(bundle);
 
   @override
   void initBuild() {}

@@ -27,16 +27,15 @@ abstract class FlitBaseFormConfig {
 
 class BaseFormElement {}
 
-class FormElement<MODEL, TYPE> extends BaseFormElement {
-  final AbstractControl<TYPE> control;
-  final MODEL Function(dynamic model, dynamic type) variableAssignToModel;
-  final dynamic Function(dynamic model, AbstractControl control)
-      assignModelToForm;
+class FormElement<MODEL, TYPE, CTYPE> extends BaseFormElement {
+  final CTYPE control;
+  final MODEL Function(dynamic model, dynamic type)? variableAssignToModel;
+  final dynamic Function(dynamic model, dynamic control)? assignModelToForm;
 
   FormElement(
-      {this.control,
-      this.variableAssignToModel = null,
-      this.assignModelToForm = null});
+      {required this.control,
+      this.variableAssignToModel,
+      this.assignModelToForm});
 }
 
 class FormElementMap<MODEL> extends BaseFormElement {
@@ -47,7 +46,7 @@ class FormElementMap<MODEL> extends BaseFormElement {
 abstract class FlitFormViewModel<MODEL, STATE extends FlitState,
     FORM extends FlitBaseFormConfig> extends FlitViewModel<STATE> {
   final FORM formConfig;
-  MODEL formModel;
+  late MODEL formModel;
 
   FlitFormViewModel(STATE state, this.formConfig) : super(state);
 
@@ -72,7 +71,8 @@ abstract class FlitFormViewModel<MODEL, STATE extends FlitState,
       if (value is FormElementMap) {
         assignValues(value.elements);
       } else if (value is FormElement && value.variableAssignToModel != null)
-        formModel = value.variableAssignToModel(formModel, value.control.value);
+        formModel =
+            value.variableAssignToModel!(formModel, value.control.value);
       //logger.d("$key -> ${value.control.value}");
     });
   }
@@ -83,7 +83,7 @@ abstract class FlitFormViewModel<MODEL, STATE extends FlitState,
         loadValues(model, value.elements);
       } else if (value is FormElement) {
         if (value.assignModelToForm != null)
-          value.assignModelToForm(model, value.control);
+          value.assignModelToForm!(model, value.control);
         //logger.d("$key -> ${value.control.value}");
       }
     });

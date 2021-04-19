@@ -10,7 +10,7 @@ abstract class FlitScreen<
     BUNDLE extends FlitBundle,
     VM extends FlitViewModel<STATE>,
     STATE extends FlitState> extends FlitBaseScreen<BUNDLE, VM, STATE> {
-  FlitScreen(FlitBundle bundle) : super(bundle);
+  FlitScreen(BUNDLE bundle) : super(bundle);
 
   // Listener on the state of the screen for UI changes with VM
   List<OnStateChanged<STATE>> get registerListeners => [];
