@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:reactive_forms/reactive_forms.dart';
 
 import 'flit_bundle.dart';
 import 'flit_state.dart';
@@ -9,19 +8,23 @@ abstract class FlitViewModel<T> extends Cubit<T> {
   void init(FlitBundle bundle) {}
 }
 
-abstract class FlitBaseFormConfig {
+abstract class FlitBaseFormConfig<T> {
   final Map<String, BaseFormElement> formElements;
-  final FormGroup form;
-  FlitBaseFormConfig(this.formElements) : form = buildForm(formElements);
+  late T form;
+  final T Function(Map<String, Object> elements) createForm;
+  FlitBaseFormConfig(this.formElements, this.createForm) {
+    form = buildForm(formElements);
+  }
 
-  static FormGroup buildForm(Map<String, dynamic> formElements) {
-    return fb.group(formElements.map((key, value) {
+  T buildForm(Map<String, dynamic> formElements) {
+    Map<String, Object> formMap = formElements.map((key, value) {
       if (value is FormElementMap) {
-        return MapEntry(key, buildForm(value.elements));
+        return MapEntry(key, buildForm(value.elements)!);
       } else {
         return MapEntry(key, value.control);
       }
-    }));
+    });
+    return createForm(formMap);
   }
 }
 
