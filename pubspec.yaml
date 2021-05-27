@@ -15,8 +15,6 @@ dependencies:
   bloc: ^7.0.0
   flutter_bloc: ^7.0.0
   reactive_forms: ^10.2.0
-  #dependancy injection
-  get_it: ^6.1.1
 
 dev_dependencies:
   flutter_test:

@@ -1,13 +1,13 @@
-import 'package:get_it/get_it.dart';
-
-abstract class FlitInjectorModule {
-  Future<void> init(GetIt injector);
+abstract class FlitInjectorModule<T> {
+  Future<void> init(T injector);
 }
 
 abstract class FlitDependencyInjector {
-  static final injector = GetIt.instance;
+  static late var injector;
 
-  static Future<void> init(List<FlitInjectorModule> modules) async {
+  static Future<void> init<T>(
+      T dependencyInjector, List<FlitInjectorModule> modules) async {
+    injector = dependencyInjector;
     modules.forEach((module) async {
       await module.init(injector);
     });
